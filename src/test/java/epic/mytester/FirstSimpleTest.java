@@ -28,8 +28,6 @@ public class FirstSimpleTest {
     $("#permanentAddress").setValue("Zemgala 15");
     $("#submit").scrollTo().click();
 
-
-
     $("#output").shouldBe(visible);
     $("#name").shouldHave(text("John Doe"));
     $("#email").shouldHave(text("john@gmail.com"));
