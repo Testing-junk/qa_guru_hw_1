@@ -17,11 +17,6 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class FormTest {
-    @BeforeAll
-    static void maximizeScreen() {
-        // Configuration.browserSize= "1920x1080";
-    }
-
 
     @Test
     void formTest() {
@@ -31,17 +26,34 @@ public class FormTest {
         $("#userEmail").setValue("johndoe@gmail.com");
         $(byText("Male")).click();
         $("#userNumber").setValue("7937711117");
-        $("#dateOfBirthInput").setValue("1 Jan 2000");
-        $("#subjectsInput").setValue("Math, History, Geography");
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").click();
+        $(".react-datepicker__month-select").selectOption("January");
+        $(".react-datepicker__year-select").click();
+        $(".react-datepicker__year-select").selectOption("2000");
+        $(".react-datepicker__day.react-datepicker__day--001").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
         $(byText("Sports")).click();
         $(byText("Reading")).click();
         $(byText("Music")).click();
         $("#uploadPicture").uploadFile(new File("upload.txt"));
         $("#currentAddress").setValue("Moscow, Zelenaya, 12-5");
-        $("#react-select-3-input").setValue("NCR");
-        $("#react-select-4-input").setValue("Delhi");
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#react-select-4-input").setValue("Delhi").pressEnter();
+        $("#submit").click();
 
-
+        // check result
+        $(".table-responsive").shouldHave(
+                text("John Doe"),
+                text("johndoe@gmail.com"),
+                text("Male"),
+                text("7937711117"),
+                text("1 January,2000"),
+                text("Maths"),
+                text("Sports, Reading, Music"),
+                text("upload.txt"),
+                text("Moscow, Zelenaya, 12-5"),
+                text("NCR Delhi"));
 
     }
 
