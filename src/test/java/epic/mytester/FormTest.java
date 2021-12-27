@@ -36,7 +36,7 @@ public class FormTest {
         $(byText("Sports")).click();
         $(byText("Reading")).click();
         $(byText("Music")).click();
-        $("#uploadPicture").uploadFile(new File("upload.txt"));
+        $("#uploadPicture").uploadFromClasspath("img/upload.txt");
         $("#currentAddress").setValue("Moscow, Zelenaya, 12-5");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
@@ -53,7 +53,8 @@ public class FormTest {
                 text("Sports, Reading, Music"),
                 text("upload.txt"),
                 text("Moscow, Zelenaya, 12-5"),
-                text("NCR Delhi"));
+                text("NCR Delhi")
+        );
 
     }
 
