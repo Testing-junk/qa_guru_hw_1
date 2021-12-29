@@ -22,7 +22,7 @@ public class GitHubTest {
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
         // $("div.px-2 h3").shouldHave(text("We couldn\'t find any code matching 'selenide' in google/googletest"));
         // how to handle Selenide.closeWindow if it closes current?
-        //cannot click button in GitHub Search box. How?
+        // cannot click button in GitHub Search box. How?
 
 
 
